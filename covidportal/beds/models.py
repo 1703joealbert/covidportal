@@ -43,8 +43,10 @@ class Hospital(models.Model):
 
 class Patient(models.Model):
     ct = (
-    ('cv', 'Covid'),
-    ('nc', 'Non-Covid')
+    ('C', 'Covid'),
+    ('I', 'ICU'),
+    ('V', 'Ventilator'),
+    ('N', 'Normal')
     )
     st = (
     ('W', 'Waiting'),
@@ -57,7 +59,7 @@ class Patient(models.Model):
     phone = models.CharField(max_length=12)
     location = models.CharField(max_length=50)
     district = models.CharField(max_length=2, choices=dt)
-    category = models.CharField(max_length=2, choices=ct)
+    category = models.CharField(max_length=4, choices=ct)
     status = models.CharField(max_length=2, choices=st, blank=True, default='W')
 
     def __str__(self):
